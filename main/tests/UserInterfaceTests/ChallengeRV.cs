@@ -59,10 +59,17 @@ namespace UserInterfaceTests
 			Session.ExecuteCommand (TextEditorCommands.LineEnd);
 
 			//List<string> s = new List<string> () {"one", "two", "three"};
-			//Session.TypeText("\nList<string> s = new List<string>(){\"one\"};");
+			Session.TypeText("\nList<string> s = new List<string>(){\"one\",\"two\",\"three\"};");
 			Session.TypeText("\nConsole.WriteLine(\"Hello Xamarin\");\n");
 
-			Ide.BuildSolution ();
+			Ide.BuildSolutionAssertToFail ();
+			Session.SelectActiveWidget ();
+
+			Session.ExecuteCommand (TextEditorCommands.PageUp);
+			Session.ExecuteCommand (TextEditorCommands.LineEnd);
+
+			Session.TypeText("\nusing System.Collections.Generic;\n");
+			Ide.BuildSolutionAssertWithWarnings ();
 			AssertExeHasOutput (exe, "Hello Xamarin");
 
 			Ide.CloseAll ();
