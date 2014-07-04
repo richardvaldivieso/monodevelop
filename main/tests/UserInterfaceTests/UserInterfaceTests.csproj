@@ -47,6 +47,7 @@
     <Compile Include="ProcessUtils.cs" />
     <Compile Include="Gui.cs" />
     <Compile Include="Ide.cs" />
+    <Compile Include="ChallengeRV.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
