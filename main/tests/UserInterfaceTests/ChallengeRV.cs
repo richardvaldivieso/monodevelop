@@ -42,10 +42,10 @@ namespace UserInterfaceTests
 		[Test]
 		public void OpenEditCompile ()
 		{
-			var slnFile = Ide.OpenTestSolution ("ConsoleApp-VS2010/ConsoleApplication.sln");
+			var slnFile = Ide.OpenTestSolution ("ConsoleApp-Empty/ConsoleApplication.sln");
 			var slnDir = slnFile.ParentDirectory;
 
-			var exe = slnDir.Combine ("bin", "Debug", "XamarinChallenge.exe");
+			var exe = slnDir.Combine ("bin", "Debug", "ConsoleApplication.exe");
 			Assert.IsFalse (File.Exists (exe));
 
 			Ide.OpenFile (slnFile.ParentDirectory.Combine ("Program.cs"));
